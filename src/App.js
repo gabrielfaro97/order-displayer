@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Order from "./components/Order";
 import Input from "./components/Input";
+import SendRemoveButton from './components/SendRemoveButton';
 import { Container, Row, Col } from "react-grid-system";
 import "./App.css";
 
@@ -38,6 +39,11 @@ class App extends Component {
             <div className="Input">
               <Input />
             </div>
+
+            <div className="Button">
+              <SendRemoveButton />
+            </div>
+            
           </div>
         </div>
       </MuiThemeProvider>
