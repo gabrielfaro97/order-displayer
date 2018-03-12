@@ -7,6 +7,7 @@ const style = {
   marginTop: 20,
   marginBottom: 20,
   marginRight: 27,
+  paddinTop: 40,
   textAlign: "center",  
   display: "inline-block",
 };
