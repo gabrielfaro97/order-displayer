@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Order from './components/Order'
-import Input from './components/Input'
-import './App.css';
+import React, { Component } from "react";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import Order from "./components/Order";
+import Input from "./components/Input";
+import { Container, Row, Col } from "react-grid-system";
+import "./App.css";
 
 class App extends Component {
   render() {
@@ -13,16 +14,34 @@ class App extends Component {
             <h1 className="App-title">Order Displayer</h1>
           </header>
 
-          <div className="Orders">       
-            <Order orderNumber={'1325'}/>
-            <Order orderNumber={'1325'}/>
-            <Order orderNumber={'1325'}/>            
-          </div>    
+          <div className="Content">
+            <Container>
+              <Row>
+                <Col sm={4}>
+                  <Order orderNumber={"1325"} />
+                </Col>
+                <Col sm={4}>
+                  <Order orderNumber={"1325"} />
+                </Col>
+                <Col sm={4}>
+                  <Order orderNumber={"1325"} />
+                </Col>
+                <Col sm={4}>
+                  <Order orderNumber={"1325"} />
+                </Col>
+                <Col sm={4}>
+                  <Order orderNumber={"1325"} />
+                </Col>
+                <Col sm={4}>
+                  <Order orderNumber={"1325"} />
+                </Col>
+              </Row>
+            </Container>
 
-          <div className="Input">
-            <Input />
+            <div className="Input">
+              <Input />
+            </div>
           </div>
-
         </div>
       </MuiThemeProvider>
     );
