@@ -6,6 +6,13 @@ import { Container, Row, Col } from "react-grid-system";
 import "./App.css";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      values: ["123", "1231", "12312", "4234", "1123"]
+    };
+  }
+
   render() {
     return (
       <MuiThemeProvider>
@@ -17,33 +24,14 @@ class App extends Component {
           <div className="Content">
             <Container>
               <Row>
-                <Col xs={6} md={3}>
-                  <Order orderNumber={"1325"} />
-                </Col>
-                <Col xs={6} md={3}>
-                  <Order orderNumber={"1325"} />
-                </Col>
-                <Col xs={6} md={3}>
-                  <Order orderNumber={"1325"} />
-                </Col>
-                <Col xs={6} md={3}>
-                  <Order orderNumber={"1325"} />
-                </Col>
-                <Col xs={6} md={3}>
-                  <Order orderNumber={"1325"} />
-                </Col>
-                <Col xs={6} md={3}>
-                  <Order orderNumber={"1325"} />
-                </Col>
-                <Col xs={6} md={3}>
-                  <Order orderNumber={"1325"} />
-                </Col>    
-                <Col xs={6} md={3}>
-                  <Order orderNumber={"1325"} />
-                </Col>  
+                {this.state.values.map((item, index) =>
+                  <Col key={index} xs={6} md={3}>
+                    <Order orderNumber={item} />
+                  </Col>
+                )}
               </Row>
             </Container>
-            <Input />                         
+            <Input />
           </div>
         </div>
       </MuiThemeProvider>
