@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import Paper from "material-ui/Paper";
 
 const style = {
-  height: 100,
-  width: 300,
-  marginTop: 20,
-  marginBottom: 20,
-  marginRight: 27,
-  paddinTop: 40,
+  height: "100%",
+  width: "85%",
+  marginTop: "20%",
+  marginBottom: "20%",
+  marginRight: "20%",
   textAlign: "center",  
   display: "inline-block",
 };
