@@ -1,8 +1,8 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
-const style = {
-  margin: 12,
+const style = { 
+  //margin: 12,
 };
 
 const SendRemoveButton = () => (

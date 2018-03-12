@@ -11,6 +11,7 @@ const style = {
   marginRight: "20%",
   textAlign: "center",  
   display: "inline-block",
+  backgroundColor: 'white'
 };
 
 export default class Order extends Component {
