@@ -7,7 +7,10 @@ const style = {
 
 const SendRemoveButton = () => (
   <div>
-    <RaisedButton label="Enviar/Remover" primary={true} style={style}/>
+    <RaisedButton
+      onTouchTap={() => alert('oi')}
+      label="Enviar/Remover" primary={true}
+      style={style}/>
   </div>
 );
 
