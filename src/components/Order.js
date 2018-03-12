@@ -5,9 +5,10 @@ const style = {
   height: 100,
   width: 300,
   marginTop: 20,
+  marginBottom: 20,
   marginRight: 27,
   textAlign: "center",  
-  display: "inline-block"
+  display: "inline-block",
 };
 
 export default class Order extends Component {
