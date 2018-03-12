@@ -31,7 +31,7 @@ class App extends Component {
                 </Col>    
                 <Col xs={6} md={3}>
                   <Order orderNumber={"1325"} />
-                </Col>                
+                </Col>  
               </Row>
             </Container>
 
