@@ -6,8 +6,7 @@ const style = {
   width: 300,
   marginTop: 20,
   marginBottom: 20,
-  marginRight: 27,
-  paddinTop: 40,
+  marginRight: 27,  
   textAlign: "center",  
   display: "inline-block",
 };
@@ -16,7 +15,13 @@ export default class Order extends Component {
   render() {
     return (
       <div>
-        <Paper style={style}> {this.props.orderNumber} </Paper>        
+        <Paper s
+          style={style}
+          zDepth={1}
+
+        > 
+          {this.props.orderNumber}
+        </Paper>        
       </div>
     );
   }

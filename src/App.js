@@ -17,24 +17,21 @@ class App extends Component {
           <div className="Content">
             <Container>
               <Row>
-                <Col sm={4}>
+                <Col xs={6} md={3}>
                   <Order orderNumber={"1325"} />
                 </Col>
-                <Col sm={4}>
+                <Col xs={6} md={3}>
                   <Order orderNumber={"1325"} />
                 </Col>
-                <Col sm={4}>
+                <Col xs={6} md={3}>
                   <Order orderNumber={"1325"} />
                 </Col>
-                <Col sm={4}>
+                <Col xs={6} md={3}>
                   <Order orderNumber={"1325"} />
-                </Col>
-                <Col sm={4}>
+                </Col>    
+                <Col xs={6} md={3}>
                   <Order orderNumber={"1325"} />
-                </Col>
-                <Col sm={4}>
-                  <Order orderNumber={"1325"} />
-                </Col>
+                </Col>                
               </Row>
             </Container>
 
