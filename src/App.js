@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Order from './components/Order'
+import Input from './components/Input'
 import './App.css';
 
 class App extends Component {
@@ -17,6 +18,10 @@ class App extends Component {
             <Order orderNumber={'1325'}/>
             <Order orderNumber={'1325'}/>            
           </div>    
+
+          <div className="Input">
+            <Input />
+          </div>
 
         </div>
       </MuiThemeProvider>
