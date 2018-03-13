@@ -1,13 +1,3 @@
-.App {
-  text-align: center;
-  background-clip: #FFFFE5
-}
-
-.Content {
-  margin-right: 25%;
-  margin-left: 25%;  
-}
-
 .App-header {
   background-color: #358F98;
   height: 50px;
@@ -15,6 +5,30 @@
   color: white;
 }
 
+.App {
+  text-align: center;
+  background-clip: #FFFFE5;  
+}
+
+.Content {
+  margin-right: 25%;
+  margin-left: 25%;  
+}
+
 .App-title {
   font-size: 1.5em;
+}
+
+errorContent{
+  background-color: #358F98;
+  width: 30%;
+  height: 30%;
+}
+
+.errorMessage {
+  padding-top: 35%;
+  padding-bottom: 35%;
+  opacity: 0.3;
+  font-weight: 700;
+  font-size: 36px
 }
