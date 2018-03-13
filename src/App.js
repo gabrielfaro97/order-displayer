@@ -10,7 +10,7 @@ import Paper from "material-ui/Paper";
 const style = {
   borderRadius: 10,
   height: 80,
-  width: 200,
+  width: '100%',
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -22,17 +22,15 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      values: ["123"],
+      values: [],
       progress: -1,
       currentValue: "",
-      hasValues: true
+      hasValues: false
     };
   }
 
-  componentWillMount() {
-    if (this.state.values.length === 0) {
-      this.setState({ hasValues: false });
-    }
+
+  componentWillMount() {   
     this.setupKey();
   }
 
@@ -45,6 +43,7 @@ class App extends Component {
       let char = String(event.keyCode - 48);
       this.setState({ currentValue: this.state.currentValue + char });
       this.setupInterval();
+      this.setState({ hasValues: true });
     }
   };
 
@@ -63,15 +62,28 @@ class App extends Component {
   };
 
   addOrder = () => {
-    clearInterval(this.interval);
+    clearInterval(this.interval);    
     this.setState({
       values: this.state.values.concat(this.state.currentValue),
       progress: -1,
       currentValue: ""
     });
+    console.log(this.state.values.length)    
   };
 
-  render() {
+  removerOrder = () => {
+    let length = this.state.values.length
+    let i = 0
+    for (i; i === length ; i++) {
+      if (this.state.currentValue === this.state.values[i]) {
+        console.log('é igual')
+      } else {
+        console.log('não é igual')
+      }
+    }
+  }
+
+  render() {    
     return (
       <MuiThemeProvider>
         <div className="App" tabIndex={0} onKeyPress={this.handlerKeyUP}>
@@ -107,7 +119,7 @@ class App extends Component {
                     )}
                   </Row>
                 : <div>
-                    <p className="errorMessage">Nada a ser exibido.</p>
+                    <p className="errorMessage">Digite o número do pedido.</p>
                   </div>}
             </Container>
           </div>
