@@ -14,10 +14,10 @@ const styles = {
 }
 
 class Input extends Component {
-  contructor(props){
+  constructor(props){
     super(props);
     this.state = {
-      code = ''
+      code: '',
     }
   }
 
