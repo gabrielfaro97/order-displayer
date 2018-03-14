@@ -5,6 +5,7 @@ import { Container, Row, Col } from "react-grid-system";
 import "./App.css";
 import CircularProgress from "material-ui/CircularProgress";
 import Paper from "material-ui/Paper";
+import Snackbar from "material-ui/Snackbar";
 
 const style = {
   borderRadius: 10,
@@ -14,7 +15,8 @@ const style = {
   alignItems: "center",
   justifyContent: "center",
   backgroundColor: "white",
-  margin: 20
+  marginTop: 20,
+  color: '#4D4D4D'
 };
 
 class App extends Component {
@@ -24,13 +26,27 @@ class App extends Component {
       values: [],
       progress: -1,
       currentValue: "",
-      hasValues: false
+      hasValues: false,
+      openSnack: false,
+      removedOrder: null
     };
   }
 
   componentWillMount() {
     this.setupKey();
   }
+
+  openSnack = () => {
+    this.setState({
+      openSnack: true
+    });
+  };
+
+  closeSnack = () => {
+    this.setState({
+      openSnack: false
+    });
+  };
 
   setupKey = event => {
     document.onkeyup = this.handlerKeyUP;
@@ -72,11 +88,13 @@ class App extends Component {
       }
     }
     if (aux === true) {
-      this.state.values.splice(index, 1);
       this.setState({
+        removedOrder: this.state.values[index],
         progress: -1,
         currentValue: ""
       });
+      this.state.values.splice(index, 1);
+      this.openSnack();      
       clearInterval(this.interval);
     } else {
       this.setState({
@@ -99,7 +117,7 @@ class App extends Component {
           </header>
 
           <div className="Content">
-            <Paper style={style}>
+            <Paper>
               <div style={style}>
                 <span
                   style={{ fontSize: 32, fontWeight: 500, paddingRight: 10 }}
@@ -128,7 +146,16 @@ class App extends Component {
                 : <div>
                     <p className="errorMessage">Digite o número do pedido.</p>
                   </div>}
-            </Container>            
+            </Container>
+            <Snackbar
+              bodyStyle={{ backgroundColor: "rgba(181, 50 ,57 , 0.9)"}}              
+              open={this.state.openSnack}
+              message={
+                "Pedido número: " + this.state.removedOrder + " removido"
+              }
+              autoHideDuration={2000}
+              onRequestClose={this.handleRequestClose}
+            />
           </div>
         </div>
       </MuiThemeProvider>
