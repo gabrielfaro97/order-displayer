@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Order from "./components/Order";
-//import Input from "./components/Input";
 import { Container, Row, Col } from "react-grid-system";
 import "./App.css";
 import CircularProgress from "material-ui/CircularProgress";
@@ -10,7 +9,7 @@ import Paper from "material-ui/Paper";
 const style = {
   borderRadius: 10,
   height: 80,
-  width: '100%',
+  width: "100%",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -29,8 +28,7 @@ class App extends Component {
     };
   }
 
-
-  componentWillMount() {   
+  componentWillMount() {
     this.setupKey();
   }
 
@@ -62,28 +60,37 @@ class App extends Component {
   };
 
   addOrder = () => {
-    clearInterval(this.interval);    
-    this.setState({
-      values: this.state.values.concat(this.state.currentValue),
-      progress: -1,
-      currentValue: ""
-    });
-    console.log(this.state.values.length)    
-  };
+    clearInterval(this.interval);
 
-  removerOrder = () => {
-    let length = this.state.values.length
-    let i = 0
-    for (i; i === length ; i++) {
+    let aux = false;
+    let index;
+
+    for (var i = 0; i <= this.state.values.length; i++) {
       if (this.state.currentValue === this.state.values[i]) {
-        console.log('é igual')
-      } else {
-        console.log('não é igual')
+        aux = true;
+        index = i;
       }
     }
-  }
+    if (aux === true) {
+      this.state.values.splice(index, 1);
+      this.setState({
+        progress: -1,
+        currentValue: ""
+      });
+      clearInterval(this.interval);
+    } else {
+      this.setState({
+        values: this.state.values.concat(this.state.currentValue),
+        progress: -1,
+        currentValue: ""
+      });
+      clearInterval(this.interval);
+    }
+  };
 
-  render() {    
+  removerOrder = () => {};
+
+  render() {
     return (
       <MuiThemeProvider>
         <div className="App" tabIndex={0} onKeyPress={this.handlerKeyUP}>
@@ -121,7 +128,7 @@ class App extends Component {
                 : <div>
                     <p className="errorMessage">Digite o número do pedido.</p>
                   </div>}
-            </Container>
+            </Container>            
           </div>
         </div>
       </MuiThemeProvider>
