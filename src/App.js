@@ -6,6 +6,9 @@ import "./App.css";
 import CircularProgress from "material-ui/CircularProgress";
 import Paper from "material-ui/Paper";
 import Snackbar from "material-ui/Snackbar";
+import AppBar from "./components/AppBar";
+import MenuItem from "material-ui/MenuItem";
+import Toggle from "material-ui/Toggle";
 
 const style = {
   borderRadius: 10,
@@ -16,7 +19,7 @@ const style = {
   justifyContent: "center",
   backgroundColor: "white",
   marginTop: 20,
-  color: '#4D4D4D'
+  color: "#4D4D4D"
 };
 
 class App extends Component {
@@ -28,13 +31,20 @@ class App extends Component {
       currentValue: "",
       hasValues: false,
       openSnack: false,
-      removedOrder: null
+      removedOrder: null,
+      autoSend: true,      
     };
   }
 
   componentWillMount() {
     this.setupKey();
   }
+
+  hasValues = () => {
+    if (this.state.values.length < 1) {
+      this.setState({ hasValues: false });
+    }
+  };
 
   openSnack = () => {
     this.setState({
@@ -94,7 +104,7 @@ class App extends Component {
         currentValue: ""
       });
       this.state.values.splice(index, 1);
-      this.openSnack();      
+      this.openSnack();
       clearInterval(this.interval);
     } else {
       this.setState({
@@ -104,17 +114,29 @@ class App extends Component {
       });
       clearInterval(this.interval);
     }
+
+    this.hasValues();
   };
 
-  removerOrder = () => {};
-
-  render() {
+  render() {    
     return (
       <MuiThemeProvider>
         <div className="App" tabIndex={0} onKeyPress={this.handlerKeyUP}>
-          <header className="App-header">
-            <h1 className="App-title">Order Displayer</h1>
-          </header>
+          <AppBar
+            menuItems={
+              <div>
+                <MenuItem primaryText="Ajuda" />
+                <MenuItem>
+                  <Toggle
+                    defaultToggled={true}
+                    label="Enviar pedido automaticamente"
+                    style={{paddingTop: 13}}
+                    onToggle={() => this.setState({autoSend:!this.state.autoSend})}
+                  />
+                </MenuItem>
+              </div>
+            }
+          />
 
           <div className="Content">
             <Paper>
@@ -148,12 +170,12 @@ class App extends Component {
                   </div>}
             </Container>
             <Snackbar
-              bodyStyle={{ backgroundColor: "rgba(181, 50 ,57 , 0.9)"}}              
+              bodyStyle={{ backgroundColor: "rgba(181, 50 ,57 , 0.9)" }}
               open={this.state.openSnack}
               message={
                 "Pedido número: " + this.state.removedOrder + " removido"
               }
-              autoHideDuration={2000}
+              autoHideDuration={2500}
               onRequestClose={this.handleRequestClose}
             />
           </div>
