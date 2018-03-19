@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Order from "./components/Order";
 import { Container, Row, Col } from "react-grid-system";
-import "./App.css";
+import "./styles/App.css";
 import CircularProgress from "material-ui/CircularProgress";
 import Paper from "material-ui/Paper";
 import Snackbar from "material-ui/Snackbar";
-import AppBar from "./components/AppBar";
+import AppBarComponent from "./components/AppBarComponent";
 import MenuItem from "material-ui/MenuItem";
 import Toggle from "material-ui/Toggle";
 
@@ -41,28 +41,34 @@ class App extends Component {
   }
 
   hasValues = () => {
+    console.log('consultou se há valores')
     if (this.state.values.length < 1) {
       this.setState({ hasValues: false });
     }
   };
 
   openSnack = () => {
+    console.log('abriu o snack')
     this.setState({
       openSnack: true
     });
   };
 
   closeSnack = () => {
+    console.log('fechou o snack')
     this.setState({
       openSnack: false
     });
   };
 
-  setupKey = event => {
+  setupKey = event => {    
+    console.log('primeira função')
     document.onkeyup = this.handlerKeyUP;
   };
 
   handlerKeyUP = event => {
+    console.clear();
+    console.log('segunda função')
     if (event.keyCode > 47 && event.keyCode < 58) {
       let char = String(event.keyCode - 48);
       this.setState({ currentValue: this.state.currentValue + char });
@@ -72,6 +78,7 @@ class App extends Component {
   };
 
   setupInterval = () => {
+    console.log('terceira função')
     clearInterval(this.interval);
     this.setState({ progress: 0 }, () => {
       this.interval = setInterval(() => {
@@ -85,7 +92,8 @@ class App extends Component {
     });
   };
 
-  addOrder = () => {
+  addOrder = () => {   
+    console.log('quarta função')
     clearInterval(this.interval);
 
     let aux = false;
@@ -115,19 +123,19 @@ class App extends Component {
       clearInterval(this.interval);
     }
 
-    this.hasValues();
+    this.hasValues();    
   };
 
   render() {    
     return (
       <MuiThemeProvider>
         <div className="App" tabIndex={0} onKeyPress={this.handlerKeyUP}>
-          <AppBar
+          <AppBarComponent
             menuItems={
               <div>
                 <MenuItem primaryText="Ajuda" />
-                <MenuItem>
-                  <Toggle
+                <MenuItem>               
+                <Toggle
                     defaultToggled={true}
                     label="Enviar pedido automaticamente"
                     style={{paddingTop: 13}}
