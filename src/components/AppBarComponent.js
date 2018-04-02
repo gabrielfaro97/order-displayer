@@ -7,7 +7,7 @@ const styles = {
   },
 
   header: {
-    backgroundColor: "#358F98",
+    backgroundColor: "#008df0",
     fontFamily: "sans-serif"
   },  
 };

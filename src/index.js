@@ -5,12 +5,15 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import injectTapEventPlugin from "react-tap-event-plugin";
 import './styles/index.css';
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 injectTapEventPlugin();
 
 render((
   <BrowserRouter>
-    <App />
+    <MuiThemeProvider>
+      <App />
+    </MuiThemeProvider>  
   </BrowserRouter>
 ), document.getElementById('root'));
 

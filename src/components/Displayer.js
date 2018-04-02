@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Order from "./Order";
 import { Container, Row, Col } from "react-grid-system";
 import "../styles/App.css";
@@ -128,7 +127,7 @@ class App extends Component {
 
   render() {    
     return (
-      <MuiThemeProvider>
+      <div>
         <div className="App" tabIndex={0} onKeyPress={this.handlerKeyUP}>
        
           <AppBarComponent
@@ -190,7 +189,7 @@ class App extends Component {
             />
           </div>
         </div>
-      </MuiThemeProvider>
+      </div>
     );
   }
 }

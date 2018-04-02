@@ -540,6 +540,9 @@ becomes this:
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}
 }
 ```
 
